@@ -35,6 +35,9 @@
     border-radius: 5px;
     cursor: pointer;
     transition: background-color 0.3s;
+    font-family: inherit;
+    font-size: inherit;
+    font-weight: bold;
   }
   
   .answer-button.hovered {
