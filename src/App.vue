@@ -1,30 +1,47 @@
 <template>
-  <nav>
-    <router-link to="/">Home</router-link> |
-    <router-link to="/about">About</router-link>
-  </nav>
-  <router-view/>
+    <div>
+        <game-over v-if="lives === 0" @restart="restartGame"></game-over>
+        <level-one v-if="currentLevel === 1 && lives > 0" :lives="lives" @correctAnswer="advanceLevel" @loseLife="loseLife"></level-one>
+        <level-two v-if="currentLevel === 2 && lives > 0" :lives="lives" @correctAnswer="advanceLevel" @loseLife="loseLife"></level-two>
+        <level-three v-if="currentLevel === 3 && lives > 0" :lives="lives" @correctAnswer="advanceLevel" @loseLife="loseLife"></level-three>
+    </div>
 </template>
 
-<style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-}
+<script>
+import gameOver from './components/GameOver.vue';
+import levelOne from './components/LevelOne.vue';
+import levelTwo from './components/LevelTwo.vue';
+import levelThree from './components/LevelThree.vue';
 
-nav {
-  padding: 30px;
-}
-
-nav a {
-  font-weight: bold;
-  color: #2c3e50;
-}
-
-nav a.router-link-exact-active {
-  color: #42b983;
-}
-</style>
+export default {
+    components: {
+        levelOne,
+        levelTwo,
+        levelThree,
+        gameOver
+    },
+    data() {
+        return {
+            currentLevel: 1,
+            lives: 3,
+        };
+    },
+    methods: {
+        advanceLevel() {
+            if (this.currentLevel === 3) {
+                window.location.href = 'https://myportal.telekom.de/';
+            }
+            this.currentLevel++;
+        },
+        loseLife() {
+            if (this.lives > 0) {
+                this.lives--;
+            }
+        },
+        restartGame() {
+            this.currentLevel = 1;
+            this.lives = 3;
+        }
+    },
+};
+</script>
