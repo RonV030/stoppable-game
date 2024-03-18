@@ -41,7 +41,25 @@ export default {
         restartGame() {
             this.currentLevel = 1;
             this.lives = 3;
+        },
+        disableScrolling() {
+            document.body.classList.add('no-scroll');
+        },
+        enableScrolling() {
+            document.body.classList.remove('no-scroll');
         }
     },
+    mounted() {
+        this.disableScrolling();
+    },
+
+    beforeUnmount() {
+        this.enableScrolling();
+    }
 };
 </script>
+<style>
+.no-scroll {
+  overflow: hidden;
+}
+</style>

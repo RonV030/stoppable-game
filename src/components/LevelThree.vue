@@ -1,9 +1,9 @@
 <template>
     <div class="quiz-level">
-        <div class="question">{{ currentQuestion.text }}</div>
+        <div class="question" v-html="currentQuestion.text"></div>
         <div class="answers">
             <button v-for="(answer, index) in currentQuestion.answers" :key="index" @click="selectAnswer(answer)">
-                {{ answer.text }}
+                <img :src="answer.imageURL" :alt="answer.altImage">
             </button>
         </div>
         <div class="lives">Lives: {{ lives }}</div>
@@ -18,12 +18,12 @@ export default {
     data() {
         return {
             currentQuestion: {
-                text: "Wer wurde getötet: Valeria \n Wer hat sie gefunden: SorOwOwski",
+                text: "Wer wurde getötet: Valeria <br> Wer hat sie gefunden: SorOwOwski",
                 answers: [
-                    { text: "Ole", isCorrect: false },
-                    { text: "Markus", isCorrect: false },
-                    { text: "Svenorita", isCorrect: true },
-                    { text: "Major Monogram", isCorrect: false },
+                    { imageURL: require('../assets/wideole.jpg'), altImage: "Ole", isCorrect: false },
+                    { imageURL: require('../assets/widelobster.jpg'), altImage: "Lobster", isCorrect: false },
+                    { imageURL: require('../assets/meowboom.gif'), altImage: "Meowboom", isCorrect: true },
+                    { imageURL: require('../assets/lucasspiegel.jpg'), altImage: "Lucas", isCorrect: false },
                 ],
             },
         };
@@ -44,10 +44,40 @@ export default {
 
 <style scoped>
 .quiz-level {
-  /* Your styles here */
+  position: relative;
+  min-height: 100vh;
+  text-align: center; /* Center everything in the quiz level */
 }
+
+.question {
+  font-size: 5vw; /* Make the question text larger */
+  margin-bottom: 20px; /* Add space below the question */
+  white-space: pre-line;
+}
+
 .answers button {
-  /* Your button styles here */
+  margin: 5px; /* Add space between buttons */
+  border: none;
+  background-color: transparent;
+  padding: 10px;
+  cursor: pointer; /* Change the cursor to indicate a clickable item */
+  font-size: 10vw;
+}
+
+.answers img {
+  width: 12vw;
+  height: auto;
+  display: block;
+}
+
+.lives {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 1vw;
+  font-size: 10vw; /* Larger font for lives */
+  color: red; /* Change color to red or any color you prefer */
+  margin-top: 20px; /* Space above the lives counter */
 }
 </style>
 
