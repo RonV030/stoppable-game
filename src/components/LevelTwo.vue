@@ -6,7 +6,7 @@
         {{ answer.text }}
       </button>
     </div>
-    <div class="lives">Lives: {{ this.lives }}</div>
+    <div class="lives">Lives: {{ lives }}</div>
   </div>
 </template>
 
