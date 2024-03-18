@@ -1,13 +1,13 @@
 <template>
-  <div class="game-over">
-    <h1>Game Over</h1>
-    <button @click="restartGame">Play Again</button>
+  <div class="game-start">
+    <h1>Are you worthy?</h1>
+    <button @click="restartGame">Play</button>
   </div>
 </template>
 
 <script>
 export default {
-  name: 'GameOver',
+  name: 'GameStart',
   methods: {
     restartGame() {
       this.$emit('restart');
@@ -17,15 +17,15 @@ export default {
 </script>
 
 <style scoped>
-.game-over {
+.game-start {
   text-align: center;
 }
 
-.game-over h1 {
+.game-start h1 {
   font-size: 10vw;
 }
 
-.game-over button {
+.game-start button {
   border: none;
   background-color: transparent;
   padding: 10px;

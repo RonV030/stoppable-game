@@ -40,7 +40,7 @@ export default {
         selectAnswer(answer) {
             if (answer.isCorrect) {
                 // Correct answer logic
-                console.log('Einer*in hälts und die anderen trinken, bis sich alles um sie herum dreht.');
+                alert('Einer*in hälts und die anderen trinken, bis sich alles um sie herum dreht.');
                 this.$emit('correctAnswer')
             } else {
                 this.$emit('lose-life')
@@ -75,7 +75,7 @@ export default {
 }
 
 .answers button {
-  margin: 5px; /* Add space between buttons */
+  margin: 2vw; /* Add space between buttons */
   border: none;
   background-color: transparent;
   padding: 10px;

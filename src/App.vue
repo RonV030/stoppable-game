@@ -1,5 +1,6 @@
 <template>
     <div>
+        <game-start v-if="currentLevel === 0" @restart="restartGame"></game-start>
         <game-over v-if="lives === 0" @restart="restartGame"></game-over>
         <level-one v-if="currentLevel === 1 && lives > 0" :lives="lives" @correctAnswer="advanceLevel" @loseLife="loseLife"></level-one>
         <level-two v-if="currentLevel === 2 && lives > 0" :lives="lives" @correctAnswer="advanceLevel" @loseLife="loseLife"></level-two>
@@ -8,6 +9,7 @@
 </template>
 
 <script>
+import gameStart from './components/GameStart.vue';
 import gameOver from './components/GameOver.vue';
 import levelOne from './components/LevelOne.vue';
 import levelTwo from './components/LevelTwo.vue';
@@ -18,11 +20,12 @@ export default {
         levelOne,
         levelTwo,
         levelThree,
-        gameOver
+        gameOver,
+        gameStart
     },
     data() {
         return {
-            currentLevel: 1,
+            currentLevel: 0,
             lives: 3,
         };
     },

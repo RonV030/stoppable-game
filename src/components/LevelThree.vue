@@ -32,7 +32,7 @@ export default {
         selectAnswer(answer) {
             if (answer.isCorrect) {
                 // Correct answer logic
-                console.log("...")
+                alert("...")
                 this.$emit('correctAnswer')
             } else {
                 this.$emit('lose-life')

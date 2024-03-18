@@ -40,7 +40,7 @@ export default {
         selectAnswer(answer) {
             if (answer.isCorrect) {
                 // Correct answer logic
-                console.log("Eine Aubergini hat Nikotin in sich, du Tiger.")
+                alert("Eine Aubergeini hat Nikotin in sich, du Tiger.")
                 this.$emit('correctAnswer')
             } else {
                 this.$emit('lose-life')
